@@ -1,4 +1,4 @@
-FROM postgres:9.3
+FROM postgres:9.6
 
 COPY run.sh run.sh
 
