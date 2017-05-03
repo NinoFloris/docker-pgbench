@@ -73,12 +73,13 @@ check_pgbench_tables
 if [[ $? -eq 3 ]]; then
   initialize_pgbench_tables
 elif [[ $? -ne 0 ]]; then
+  echo 'Return status ' $?
   exit $?
 fi
 
 echo '***************   Running pgbench    ***************'
 
-for run in 1 2 3; do
+for run in 1; do
   echo Starting run $run
   pgbench -c $(($(nproc) * 4)) -j $(nproc) -M prepared -s ${SCALE_FACTOR} -T 300
   echo
